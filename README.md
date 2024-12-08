@@ -8,17 +8,17 @@
 
 **2.** ***Scientific Functions:***
 
-***Trigonometric:*** `sin`, `cos`, `tan`, `asin`, `acos`, `atan`
+***i.*** ***Trigonometric:*** `sin`, `cos`, `tan`, `asin`, `acos`, `atan`
 
-***Exponential:*** `exp`
+***ii.*** ***Exponential:*** `exp`
 
-***Logarithmic:*** `log` *(base 10)*
+***iii.*** ***Logarithmic:*** `log` *(base 10)*
 
-***Square Root:*** `sqrt`
+***iv.*** ***Square Root:*** `sqrt`
 
-***Factorial:*** `fact`
+***v.*** ***Factorial:*** `fact`
 
-***Constants:*** `pi`, `e`
+***vi.*** ***Constants:*** `pi`, `e`
 
 
 ***3.*** **Miscellaneous:**
