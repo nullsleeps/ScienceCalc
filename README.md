@@ -4,11 +4,12 @@
 **1.** ***Basic Operations:***
 
 *i.* ***Addition.***
-*ii.* ***Subtraction.***
-*iii.* ***Multipication.***
-*iv.* ***Division.***
 
-`Addition, Subtraction, Multiplication, Division.`
+*ii.* ***Subtraction.***
+
+*iii.* ***Multipication.***
+
+*iv.* ***Division.***
 
 
 **2.** ***Scientific Functions:***
