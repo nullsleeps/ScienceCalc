@@ -23,11 +23,11 @@
 
 ***3.*** **Miscellaneous:**
 
-***Parentheses for grouping:*** `(`,`)`
+***i.*** ***Parentheses for grouping:*** `(`,`)`
 
-***Rounding:*** `round`
+***ii.*** ***Rounding:*** `round`
 
-***Percentage calculation:*** `%`
+***iii.*** **Percentage calculation:*** `%`
 
 
 **Execution:**
