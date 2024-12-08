@@ -13,66 +13,121 @@ class ScientificCalculator:
         self.create_widgets()
 
     def create_widgets(self):
-        entry = tk.Entry(self.master, textvariable=self.input_text, font=("Arial", 20), bd=8, insertwidth=2, width=15, borderwidth=4)
-        entry.grid(row=0, column=0, columnspan=5)
+        entry = tk.Entry(
+            self.master,
+            textvariable=self.input_text,
+            font=("Digital-7", 30),
+            bd=8,
+            insertwidth=2,
+            width=18,
+            borderwidth=4,
+            justify="right",
+            fg="white",
+            bg="black",
+            highlightbackground="black",
+            highlightthickness=1,
+        )
+        entry.grid(row=0, column=0, columnspan=5, pady=10, padx=5)
 
-        button_texts = [
-            '7', '8', '9', '/', 'C',
-            '4', '5', '6', '*', 'sqrt',
-            '1', '2', '3', '-', 'sin',
-            '0', '.', '=', '+', 'cos',
-            '(', ')', 'tan', 'log', 'asin',
-            'acos', 'atan', 'exp', 'fact', 'pi',
-            'e', 'round', '%'
+        buttons = [
+            ["C", "(", ")", "÷"],
+            ["7", "8", "9", "×"],
+            ["4", "5", "6", "-"],
+            ["1", "2", "3", "+"],
+            [".", "0", "π", "√"],
+        ]
+        
+        scientific_buttons = [
+            ["sin", "cos", "tan", "log"],
+            ["asin", "acos", "atan", "exp"],
+            ["fact", "%", "e", "="],
         ]
 
-        row_val = 1
-        col_val = 0
-        for text in button_texts:
-            self.create_button(text, row_val, col_val)
-            col_val += 1
-            if col_val > 4:
-                col_val = 0
-                row_val += 1
+        for row, button_row in enumerate(buttons):
+            for col, text in enumerate(button_row):
+                self.create_button(
+                    text,
+                    row + 1,
+                    col,
+                    colspan=1,
+                    bg_color=self.get_button_color(text),
+                )
 
-    def create_button(self, text, row, col):
-        button = tk.Button(self.master, text=text, padx=20, pady=20, font=("Arial", 15),
-                           command=lambda: self.on_button_click(text))
-        button.grid(row=row, column=col)
+        for row, button_row in enumerate(scientific_buttons, start=6):
+            for col, text in enumerate(button_row):
+                self.create_button(
+                    text,
+                    row + 1,
+                    col,
+                    colspan=1,
+                    bg_color=self.get_button_color(text),
+                )
+
+        for i in range(7):
+            self.master.grid_rowconfigure(i, weight=1)
+        for i in range(5):
+            self.master.grid_columnconfigure(i, weight=1)
+
+    def create_button(self, text, row, col, bg_color="#2ecc71", colspan=1, sticky="nsew"):
+        button = tk.Button(
+            self.master,
+            text=text,
+            padx=20,
+            pady=20,
+            font=("Roboto Mono", 15),
+            bg=bg_color,
+            fg="#ffffff",
+            command=lambda: self.on_button_click(text),
+        )
+        button.grid(row=row, column=col, columnspan=colspan, padx=5, pady=5, sticky=sticky)
+
 
     def on_button_click(self, char):
-        if char == 'C':
+        if char == "C":
             self.expression = ""
             self.input_text.set("")
-        elif char == '=':
+        elif char == "=":
             try:
-                result = eval(self.expression, {"__builtins__": None}, self.get_math_functions())
+                expression = self.expression.replace("×", "*").replace("÷", "/").replace("π", "pi")
+                result = eval(expression, {"__builtins__": None}, self.get_math_functions())
                 self.input_text.set(result)
                 self.expression = str(result)
-            except Exception as e:
+            except Exception:
                 messagebox.showerror("Error", "Invalid Input")
                 self.expression = ""
                 self.input_text.set("")
+        elif char in ["√", "fact", "sin", "cos", "tan", "asin", "acos", "atan", "log", "exp"]:
+            self.expression += f"{char}("
+            self.input_text.set(self.expression)
         else:
             self.expression += char
             self.input_text.set(self.expression)
 
+    def get_button_color(self, text):
+        if text in ["+", "-", "×", "÷", "√"]:
+            return "#3498db"
+        elif text in ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", ".",  "π", "(", ")"]:
+            return "#2ecc71"
+        if text in ["C", "="]:
+            return "#e74c3c"
+        if text in ["%", "fact", "sin", "cos", "tan", "asin", "acos", "atan", "log", "exp", "e"]:
+            return "#9b59b6"
+
     def get_math_functions(self):
         return {
-            'sin': math.sin,
-            'cos': math.cos,
-            'tan': math.tan,
-            'asin': math.asin,
-            'acos': math.acos,
-            'atan': math.atan,
-            'exp': math.exp,
-            'log': math.log10,
-            'sqrt': math.sqrt,
-            'fact': self.factorial,
-            'pi': math.pi,
-            'e': math.e,
-            'round': round,
-            '%': lambda x: x / 100
+            "sin": math.sin,
+            "cos": math.cos,
+            "tan": math.tan,
+            "asin": math.asin,
+            "acos": math.acos,
+            "atan": math.atan,
+            "exp": math.exp,
+            "log": math.log10,
+            "√": math.sqrt,
+            "fact": self.factorial,
+            "pi": math.pi,
+            "e": math.e,
+            "%": lambda x: x / 100,
         }
 
     def factorial(self, n):
@@ -82,7 +137,11 @@ class ScientificCalculator:
             return 1
         return n * self.factorial(n - 1)
 
+
 if __name__ == "__main__":
     root = tk.Tk()
+    root.resizable(False, False)
+    root.geometry("410x766")
     calculator = ScientificCalculator(root)
+    root.configure(bg="#34495e")
     root.mainloop()
