@@ -3,31 +3,36 @@
 
 **1.** ***Basic Operations:***
 
+*i.* ***Addition.***
+*ii.* ***Subtraction.***
+*iii.* ***Multipication.***
+*iv.* ***Division.***
+
 `Addition, Subtraction, Multiplication, Division.`
 
 
 **2.** ***Scientific Functions:***
 
-***i.*** ***Trigonometric:*** `sin`, `cos`, `tan`, `asin`, `acos`, `atan`
+*i.* ***Trigonometric:*** `sin`, `cos`, `tan`, `asin`, `acos`, `atan`
 
-***ii.*** ***Exponential:*** `exp`
+*ii.* ***Exponential:*** `exp`
 
-***iii.*** ***Logarithmic:*** `log` *(base 10)*
+*iii.* ***Logarithmic:*** `log` *(base 10)*
 
-***iv.*** ***Square Root:*** `sqrt`
+*iv.* ***Square Root:*** `sqrt`
 
-***v.*** ***Factorial:*** `fact`
+*v.* ***Factorial:*** `fact`
 
-***vi.*** ***Constants:*** `pi`, `e`
+*vi.* ***Constants:*** `pi`, `e`
 
 
 ***3.*** **Miscellaneous:**
 
-***i.*** ***Parentheses for grouping:*** `(`,`)`
+*i.* ***Parentheses for grouping:*** `(`,`)`
 
-***ii.*** ***Rounding:*** `round`
+*ii.* ***Rounding:*** `round`
 
-***iii.*** **Percentage calculation:*** `%`
+*iii.* **Percentage calculation:*** `%`
 
 
 **Execution:**
