@@ -36,5 +36,5 @@
 
 ***Run:***
 ```python
-python scientific_calculator.py`
+python scientific_calculator.py
 ```
